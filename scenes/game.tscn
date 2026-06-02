@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://e1game001"]
+
+[ext_resource type="Script" path="res://scripts/game_scene.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/map_grid.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/wave_manager.gd" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/heroes/hero.tscn" id="4"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1")
+
+[node name="MapGrid" type="Node2D" parent="."]
+script = ExtResource("2")
+cell_size = Vector2(64, 64)
+map_size = Vector2i(30, 16)
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("3")
+wave_interval = 30.0
+
+[node name="Hero" parent="." instance=ExtResource("4")]
+position = Vector2(200, 300)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TopBar" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 600.0
+offset_bottom = 40.0
+
+[node name="GoldLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+text = "Gold: 500"
+
+[node name="LivesLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+text = "Lives: 20"
+
+[node name="WaveLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+text = "Wave: 0"
+
+[node name="Spacer" type="Control" parent="HUD/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WaveButton" type="Button" parent="HUD/TopBar"]
+layout_mode = 2
+text = "Next Wave"
+
+[node name="SpeedButton" type="Button" parent="HUD/TopBar"]
+layout_mode = 2
+text = "1x"
+
+[node name="TowerPanel" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -120.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TowerButtons" type="VBoxContainer" parent="HUD/TowerPanel"]
+layout_mode = 2
+
+[node name="ArrowBtn" type="Button" parent="HUD/TowerPanel/TowerButtons"]
+layout_mode = 2
+text = "Arrow Tower (100g)"
+
+[node name="MagicBtn" type="Button" parent="HUD/TowerPanel/TowerButtons"]
+layout_mode = 2
+text = "Magic Tower (150g)"
+
+[node name="CannonBtn" type="Button" parent="HUD/TowerPanel/TowerButtons"]
+layout_mode = 2
+text = "Cannon Tower (200g)"
+
+[node name="LightBtn" type="Button" parent="HUD/TowerPanel/TowerButtons"]
+layout_mode = 2
+text = "Light Tower (250g)"
+
+[node name="SummonBtn" type="Button" parent="HUD/TowerPanel/TowerButtons"]
+layout_mode = 2
+text = "Summon Tower (300g)"
+
+[connection signal="pressed" from="HUD/TopBar/WaveButton" to="HUD" method="_on_wave_button_pressed"]
+[connection signal="pressed" from="HUD/TopBar/SpeedButton" to="HUD" method="_on_speed_button_pressed"]
