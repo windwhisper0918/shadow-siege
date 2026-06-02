@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3mage001"]
+
+[ext_resource type="Script" path="res://scripts/enemy_base.gd" id="1"]
+
+[node name="Mage" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1")
+enemy_name = "Mage"
+max_hp = 80.0
+armor = 5.0
+magic_resist = 30.0
+move_speed = 90.0
+reward_gold = 20
+reward_exp = 12
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -24.0
+max_value = 80.0
+value = 80.0
+show_percentage = false
