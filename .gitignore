@@ -1,0 +1,19 @@
+# Godot 4
+.godot/
+*.tmp
+*.import
+export_presets.cfg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build
+build/
+export/
