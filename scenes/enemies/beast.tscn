@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4beast001"]
+
+[ext_resource type="Script" path="res://scripts/enemy_base.gd" id="1"]
+
+[node name="Beast" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1")
+enemy_name = "Beast"
+max_hp = 500.0
+armor = 20.0
+magic_resist = 20.0
+move_speed = 50.0
+reward_gold = 100
+reward_exp = 50
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = -29.0
+max_value = 500.0
+value = 500.0
+show_percentage = false
